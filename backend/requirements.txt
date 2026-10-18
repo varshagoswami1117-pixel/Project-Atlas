@@ -5,6 +5,7 @@ python-dotenv
 pymysql
 sqlalchemy
 chromadb>=0.5,<2
+langgraph>=0.2,<2
 pydantic
 pypdf
 pytest

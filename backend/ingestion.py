@@ -273,7 +273,11 @@ def retrieve_authorized_chunks(
     if not authorized_ids:
         return []
 
-    result = _get_collection().query(
+    collection = _get_collection()
+    if collection.count() == 0:
+        return []
+
+    result = collection.query(
         query_texts=[cleaned_query],
         n_results=limit,
         where={"report_id": {"$in": authorized_ids}},

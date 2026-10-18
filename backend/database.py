@@ -23,6 +23,7 @@ from sqlalchemy import (
     TIMESTAMP,
     UniqueConstraint,
     create_engine,
+    event,
     func,
     text,
 )
@@ -79,22 +80,36 @@ def _make_database_url() -> URL:
     )
 
 
-engine = create_engine(
-    _make_database_url(),
-    pool_pre_ping=True,
-    pool_recycle=_positive_int_setting("DB_POOL_RECYCLE", 1800),
-    pool_size=_positive_int_setting("DB_POOL_SIZE", 5),
-    max_overflow=_non_negative_int_setting("DB_MAX_OVERFLOW", 10),
-    pool_timeout=_positive_int_setting("DB_POOL_TIMEOUT", 30),
-    connect_args={
+_pool_options = {
+    "pool_pre_ping": True,
+    "pool_recycle": _positive_int_setting("DB_POOL_RECYCLE", 1800),
+    "pool_size": _positive_int_setting("DB_POOL_SIZE", 5),
+    "max_overflow": _non_negative_int_setting("DB_MAX_OVERFLOW", 10),
+    "pool_timeout": _positive_int_setting("DB_POOL_TIMEOUT", 30),
+    "connect_args": {
         "connect_timeout": _positive_int_setting("DB_CONNECT_TIMEOUT", 10),
         "read_timeout": _positive_int_setting("DB_READ_TIMEOUT", 30),
         "write_timeout": _positive_int_setting("DB_WRITE_TIMEOUT", 30),
     },
-)
+}
+_database_url = _make_database_url()
+
+engine = create_engine(_database_url, **_pool_options)
+readonly_engine = create_engine(_database_url, **_pool_options)
+
+
+@event.listens_for(readonly_engine, "connect")
+def _configure_readonly_connection(dbapi_connection: Any, _: Any) -> None:
+    with dbapi_connection.cursor() as cursor:
+        cursor.execute("SET SESSION TRANSACTION READ ONLY")
 
 SessionLocal = sessionmaker(
     bind=engine,
+    autoflush=False,
+    expire_on_commit=False,
+)
+ReadOnlySessionLocal = sessionmaker(
+    bind=readonly_engine,
     autoflush=False,
     expire_on_commit=False,
 )
@@ -486,5 +501,14 @@ def get_db() -> Generator[Session, None, None]:
         session.close()
 
 
+def get_readonly_db() -> Generator[Session, None, None]:
+    session = ReadOnlySessionLocal()
+    try:
+        yield session
+    finally:
+        session.close()
+
+
 def dispose_db() -> None:
     engine.dispose()
+    readonly_engine.dispose()
