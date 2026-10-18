@@ -1,0 +1,11 @@
+
+fastapi
+uvicorn[standard]
+python-dotenv
+pymysql
+sqlalchemy
+chromadb>=0.5,<2
+pydantic
+pypdf
+pytest
+httpx
