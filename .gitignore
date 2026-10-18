@@ -1,0 +1,19 @@
+# Local Database & API Credentials
+backend/.env
+.env
+*.env
+
+# Local Python Environment & Libraries 
+venv/
+.venv/
+env/
+
+# Python Compilation & Test Caches
+__pycache__/
+*.pyc
+.pytest_cache/
+.cache/
+
+# System Files
+.DS_Store
+Thumbs.db
