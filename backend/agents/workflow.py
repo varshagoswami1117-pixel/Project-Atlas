@@ -182,6 +182,31 @@ def _metric_record(row: Any) -> dict[str, Any]:
     }
 
 
+def _include_synthetic_metrics() -> bool:
+    configured = os.getenv("ATLAS_INCLUDE_SYNTHETIC_METRICS", "false").strip().casefold()
+    if configured not in {"true", "false"}:
+        raise RuntimeError("ATLAS_INCLUDE_SYNTHETIC_METRICS must be true or false.")
+    return configured == "true"
+
+
+def _metric_statement(authorized_ids: list[int]):
+    statement = (
+        select(MarketMetric, Report.title)
+        .join(Report, Report.id == MarketMetric.report_id)
+        .where(MarketMetric.report_id.in_(authorized_ids))
+    )
+    if not _include_synthetic_metrics():
+        statement = statement.where(MarketMetric.is_synthetic.is_(False))
+    return (
+        statement.order_by(
+            MarketMetric.report_id,
+            MarketMetric.period_start,
+            MarketMetric.id,
+        )
+        .limit(MAX_SQL_METRICS)
+    )
+
+
 def _metric_year(metric: dict[str, Any]) -> int | None:
     for key in ("period_end", "period_start"):
         value = metric.get(key)
@@ -254,18 +279,11 @@ def _retrieval_node(state: WorkflowState) -> dict[str, Any]:
             "conflicts": [],
         }
 
-    statement = (
-        select(MarketMetric, Report.title)
-        .join(Report, Report.id == MarketMetric.report_id)
-        .where(
-            MarketMetric.report_id.in_(authorized_ids),
-            MarketMetric.is_synthetic.is_(False),
-        )
-        .order_by(MarketMetric.report_id, MarketMetric.period_start, MarketMetric.id)
-        .limit(MAX_SQL_METRICS)
-    )
     try:
-        metrics = [_metric_record(row) for row in readonly_db.execute(statement).all()]
+        metrics = [
+            _metric_record(row)
+            for row in readonly_db.execute(_metric_statement(authorized_ids)).all()
+        ]
     except SQLAlchemyError as error:
         logger.exception("Could not query authorized metrics for client_id=%s", client_id)
         raise WorkflowUnavailableError("Metric retrieval failed.") from error

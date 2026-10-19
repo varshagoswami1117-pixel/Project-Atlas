@@ -1,7 +1,10 @@
-# Local Database & API Credentials
-backend/.env
+# Local secrets and environment overrides
 .env
-*.env
+.env.*
+**/.env
+**/.env.*
+!/.env.example
+!**/.env.example
 
 # Local Python Environment & Libraries 
 venv/
@@ -13,6 +16,16 @@ __pycache__/
 *.pyc
 .pytest_cache/
 .cache/
+
+# Local report uploads and persistent vector data
+data/uploads/
+data/vector_store/
+data/synthetic_test_dataset/.run_state.json
+
+# Frontend package/build artifacts
+node_modules/
+frontend/dist/
+frontend/coverage/
 
 # System Files
 .DS_Store

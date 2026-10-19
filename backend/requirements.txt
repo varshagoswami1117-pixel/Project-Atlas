@@ -10,3 +10,4 @@ pydantic
 pypdf
 pytest
 httpx
+python-multipart

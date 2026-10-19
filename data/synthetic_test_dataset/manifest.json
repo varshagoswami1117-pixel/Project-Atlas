@@ -1,0 +1,341 @@
+{
+  "dataset_key": "project-atlas-synthetic-e2e-v1",
+  "clients": [
+    {
+      "key": "client-01",
+      "name": "[SYNTHETIC TEST] Asteria Analytics",
+      "contact_email": "atlas-synthetic-client-01@example.invalid",
+      "reports": ["report-01", "report-04", "report-05"]
+    },
+    {
+      "key": "client-02",
+      "name": "[SYNTHETIC TEST] Bluehaven Research",
+      "contact_email": "atlas-synthetic-client-02@example.invalid",
+      "reports": ["report-02", "report-04", "report-05"]
+    },
+    {
+      "key": "client-03",
+      "name": "[SYNTHETIC TEST] Cinderfield Markets",
+      "contact_email": "atlas-synthetic-client-03@example.invalid",
+      "reports": ["report-03", "report-04", "report-05"]
+    },
+    {
+      "key": "client-04",
+      "name": "[SYNTHETIC TEST] Driftwood Insights",
+      "contact_email": "atlas-synthetic-client-04@example.invalid",
+      "reports": ["report-01", "report-04", "report-05"]
+    },
+    {
+      "key": "client-05",
+      "name": "[SYNTHETIC TEST] Emberline Advisory",
+      "contact_email": "atlas-synthetic-client-05@example.invalid",
+      "reports": ["report-02", "report-04", "report-05"]
+    }
+  ],
+  "reports": [
+    {
+      "key": "report-01",
+      "title": "[SYNTHETIC] Northstar Europe Energy Market Outlook",
+      "source_filename": "SYNTHETIC-atlas-report-01.md",
+      "storage_path": "data/synthetic_test_dataset/reports/report-01.md",
+      "report_type": "SYNTHETIC energy market outlook",
+      "publisher": "[SYNTHETIC] Atlas Fictional Research",
+      "publication_date": "2025-01-15",
+      "sector": "Energy",
+      "region": "Europe",
+      "geography": "Europe",
+      "year": 2025,
+      "annual_series": true
+    },
+    {
+      "key": "report-02",
+      "title": "[SYNTHETIC] Solara East Asia Food Systems Brief",
+      "source_filename": "SYNTHETIC-atlas-report-02.md",
+      "storage_path": "data/synthetic_test_dataset/reports/report-02.md",
+      "report_type": "SYNTHETIC agriculture market brief",
+      "publisher": "[SYNTHETIC] Atlas Fictional Research",
+      "publication_date": "2025-03-20",
+      "sector": "Agriculture",
+      "region": "East Asia",
+      "geography": "East Asia",
+      "year": 2025,
+      "additional_metrics": [
+        {
+          "metric_name": "SYNTHETIC report 02 crop resilience score",
+          "value": "72.5",
+          "unit": "index points",
+          "geography": "East Asia",
+          "segment": "coastal rice farms",
+          "year": 2025,
+          "source_quote": "The SYNTHETIC report 02 crop resilience score was 72.5 index points for East Asia coastal rice farms in 2025."
+        },
+        {
+          "metric_name": "SYNTHETIC report 02 cold-chain capacity",
+          "value": "14.5",
+          "unit": "thousand tonnes",
+          "geography": "East Asia",
+          "segment": "regional storage",
+          "year": 2025,
+          "source_quote": "The SYNTHETIC report 02 cold-chain capacity was 14.5 thousand tonnes for East Asia regional storage in 2025."
+        },
+        {
+          "metric_name": "SYNTHETIC report 02 irrigation coverage",
+          "value": "64",
+          "unit": "percent",
+          "geography": "East Asia",
+          "segment": "test districts",
+          "year": 2024,
+          "source_quote": "The SYNTHETIC report 02 irrigation coverage was 64 percent for East Asia test districts in 2024."
+        },
+        {
+          "metric_name": "SYNTHETIC report 02 soil renewal index",
+          "value": "81.2",
+          "unit": "index points",
+          "geography": "East Asia",
+          "segment": "synthetic pilot plots",
+          "year": 2024,
+          "source_quote": "The SYNTHETIC report 02 soil renewal index was 81.2 index points for East Asia synthetic pilot plots in 2024."
+        },
+        {
+          "metric_name": "SYNTHETIC report 02 transport loss rate",
+          "value": "3.4",
+          "unit": "percent",
+          "geography": "East Asia",
+          "segment": "fictional produce route",
+          "year": 2025,
+          "source_quote": "The SYNTHETIC report 02 transport loss rate was 3.4 percent for the East Asia fictional produce route in 2025."
+        },
+        {
+          "metric_name": "SYNTHETIC report 02 seed adoption index",
+          "value": "58.7",
+          "unit": "index points",
+          "geography": "East Asia",
+          "segment": "invented seed cohort",
+          "year": 2023,
+          "source_quote": "The SYNTHETIC report 02 seed adoption index was 58.7 index points for the East Asia invented seed cohort in 2023."
+        }
+      ]
+    },
+    {
+      "key": "report-03",
+      "title": "[SYNTHETIC] Meridian North America Transit Index",
+      "source_filename": "SYNTHETIC-atlas-report-03.md",
+      "storage_path": "data/synthetic_test_dataset/reports/report-03.md",
+      "report_type": "SYNTHETIC mobility market index",
+      "publisher": "[SYNTHETIC] Atlas Fictional Research",
+      "publication_date": "2025-06-10",
+      "sector": "Mobility",
+      "region": "North America",
+      "geography": "North America",
+      "year": 2025,
+      "additional_metrics": [
+        {
+          "metric_name": "SYNTHETIC report 03 transit access score",
+          "value": "76.4",
+          "unit": "index points",
+          "geography": "North America",
+          "segment": "fictional metro network",
+          "year": 2025,
+          "source_quote": "The SYNTHETIC report 03 transit access score was 76.4 index points for the North America fictional metro network in 2025."
+        },
+        {
+          "metric_name": "SYNTHETIC report 03 fleet utilization",
+          "value": "68.2",
+          "unit": "percent",
+          "geography": "North America",
+          "segment": "invented electric fleet",
+          "year": 2025,
+          "source_quote": "The SYNTHETIC report 03 fleet utilization was 68.2 percent for the North America invented electric fleet in 2025."
+        },
+        {
+          "metric_name": "SYNTHETIC report 03 route reliability",
+          "value": "94.1",
+          "unit": "percent",
+          "geography": "North America",
+          "segment": "test routes",
+          "year": 2024,
+          "source_quote": "The SYNTHETIC report 03 route reliability was 94.1 percent for North America test routes in 2024."
+        },
+        {
+          "metric_name": "SYNTHETIC report 03 charging availability",
+          "value": "88.6",
+          "unit": "percent",
+          "geography": "North America",
+          "segment": "synthetic depot set",
+          "year": 2024,
+          "source_quote": "The SYNTHETIC report 03 charging availability was 88.6 percent for the North America synthetic depot set in 2024."
+        },
+        {
+          "metric_name": "SYNTHETIC report 03 commuter volume",
+          "value": "2.8",
+          "unit": "million trips",
+          "geography": "North America",
+          "segment": "fictional weekday sample",
+          "year": 2025,
+          "source_quote": "The SYNTHETIC report 03 commuter volume was 2.8 million trips for the North America fictional weekday sample in 2025."
+        },
+        {
+          "metric_name": "SYNTHETIC report 03 service coverage",
+          "value": "71.3",
+          "unit": "percent",
+          "geography": "North America",
+          "segment": "invented outer districts",
+          "year": 2023,
+          "source_quote": "The SYNTHETIC report 03 service coverage was 71.3 percent for the North America invented outer districts in 2023."
+        }
+      ]
+    },
+    {
+      "key": "report-04",
+      "title": "[SYNTHETIC] Cedar Infrastructure Conflict Control A",
+      "source_filename": "SYNTHETIC-atlas-report-04.md",
+      "storage_path": "data/synthetic_test_dataset/reports/report-04.md",
+      "report_type": "SYNTHETIC conflict-control infrastructure brief",
+      "publisher": "[SYNTHETIC] Atlas Fictional Research",
+      "publication_date": "2025-08-05",
+      "sector": "Infrastructure",
+      "region": "Synthetic Control Zone",
+      "geography": "Synthetic Control Zone",
+      "year": 2025,
+      "conflict_year": 2024,
+      "conflict_value": "100",
+      "additional_metrics": [
+        {
+          "metric_name": "SYNTHETIC report 04 water reuse volume",
+          "value": "18.2",
+          "unit": "million litres",
+          "geography": "Synthetic Control Zone",
+          "segment": "fictional pilot plant",
+          "year": 2025,
+          "source_quote": "The SYNTHETIC report 04 water reuse volume was 18.2 million litres for the Synthetic Control Zone fictional pilot plant in 2025."
+        },
+        {
+          "metric_name": "SYNTHETIC report 04 grid resilience score",
+          "value": "83.1",
+          "unit": "index points",
+          "geography": "Synthetic Control Zone",
+          "segment": "test power network",
+          "year": 2024,
+          "source_quote": "The SYNTHETIC report 04 grid resilience score was 83.1 index points for the Synthetic Control Zone test power network in 2024."
+        },
+        {
+          "metric_name": "SYNTHETIC report 04 materials recovery rate",
+          "value": "61.7",
+          "unit": "percent",
+          "geography": "Synthetic Control Zone",
+          "segment": "invented construction cohort",
+          "year": 2025,
+          "source_quote": "The SYNTHETIC report 04 materials recovery rate was 61.7 percent for the Synthetic Control Zone invented construction cohort in 2025."
+        },
+        {
+          "metric_name": "SYNTHETIC report 04 storage response time",
+          "value": "4.6",
+          "unit": "minutes",
+          "geography": "Synthetic Control Zone",
+          "segment": "fictional battery system",
+          "year": 2023,
+          "source_quote": "The SYNTHETIC report 04 storage response time was 4.6 minutes for the Synthetic Control Zone fictional battery system in 2023."
+        },
+        {
+          "metric_name": "SYNTHETIC report 04 maintenance index",
+          "value": "92.4",
+          "unit": "index points",
+          "geography": "Synthetic Control Zone",
+          "segment": "synthetic infrastructure",
+          "year": 2024,
+          "source_quote": "The SYNTHETIC report 04 maintenance index was 92.4 index points for the Synthetic Control Zone synthetic infrastructure in 2024."
+        },
+        {
+          "metric_name": "SYNTHETIC report 04 asset availability",
+          "value": "97.2",
+          "unit": "percent",
+          "geography": "Synthetic Control Zone",
+          "segment": "fictional public assets",
+          "year": 2025,
+          "source_quote": "The SYNTHETIC report 04 asset availability was 97.2 percent for the Synthetic Control Zone fictional public assets in 2025."
+        }
+      ]
+    },
+    {
+      "key": "report-05",
+      "title": "[SYNTHETIC] Cedar Infrastructure Conflict Control B",
+      "source_filename": "SYNTHETIC-atlas-report-05.md",
+      "storage_path": "data/synthetic_test_dataset/reports/report-05.md",
+      "report_type": "SYNTHETIC conflict-control infrastructure brief",
+      "publisher": "[SYNTHETIC] Atlas Fictional Research",
+      "publication_date": "2025-10-18",
+      "sector": "Infrastructure",
+      "region": "Synthetic Control Zone",
+      "geography": "Synthetic Control Zone",
+      "year": 2025,
+      "conflict_year": 2024,
+      "conflict_value": "101",
+      "additional_metrics": [
+        {
+          "metric_name": "SYNTHETIC report 05 waste diversion index",
+          "value": "74.3",
+          "unit": "index points",
+          "geography": "Synthetic Control Zone",
+          "segment": "fictional reuse network",
+          "year": 2025,
+          "source_quote": "The SYNTHETIC report 05 waste diversion index was 74.3 index points for the Synthetic Control Zone fictional reuse network in 2025."
+        },
+        {
+          "metric_name": "SYNTHETIC report 05 backup capacity",
+          "value": "12.8",
+          "unit": "megawatts",
+          "geography": "Synthetic Control Zone",
+          "segment": "synthetic reserve system",
+          "year": 2024,
+          "source_quote": "The SYNTHETIC report 05 backup capacity was 12.8 megawatts for the Synthetic Control Zone synthetic reserve system in 2024."
+        },
+        {
+          "metric_name": "SYNTHETIC report 05 inspection coverage",
+          "value": "89.5",
+          "unit": "percent",
+          "geography": "Synthetic Control Zone",
+          "segment": "invented facility sample",
+          "year": 2025,
+          "source_quote": "The SYNTHETIC report 05 inspection coverage was 89.5 percent for the Synthetic Control Zone invented facility sample in 2025."
+        },
+        {
+          "metric_name": "SYNTHETIC report 05 equipment renewal score",
+          "value": "67.9",
+          "unit": "index points",
+          "geography": "Synthetic Control Zone",
+          "segment": "fictional equipment pool",
+          "year": 2023,
+          "source_quote": "The SYNTHETIC report 05 equipment renewal score was 67.9 index points for the Synthetic Control Zone fictional equipment pool in 2023."
+        },
+        {
+          "metric_name": "SYNTHETIC report 05 inspection turnaround",
+          "value": "3.2",
+          "unit": "days",
+          "geography": "Synthetic Control Zone",
+          "segment": "synthetic maintenance cycle",
+          "year": 2024,
+          "source_quote": "The SYNTHETIC report 05 inspection turnaround was 3.2 days for the Synthetic Control Zone synthetic maintenance cycle in 2024."
+        },
+        {
+          "metric_name": "SYNTHETIC report 05 materials readiness",
+          "value": "91.6",
+          "unit": "percent",
+          "geography": "Synthetic Control Zone",
+          "segment": "fictional response plan",
+          "year": 2025,
+          "source_quote": "The SYNTHETIC report 05 materials readiness was 91.6 percent for the Synthetic Control Zone fictional response plan in 2025."
+        }
+      ]
+    }
+  ],
+  "annual_values": [
+    ["2020", "100"],
+    ["2021", "110"],
+    ["2022", "121"],
+    ["2023", "133.1"],
+    ["2024", "146.41"],
+    ["2025", "161.051"]
+  ],
+  "metric_name": "SYNTHETIC market revenue",
+  "unit": "USD billion"
+}

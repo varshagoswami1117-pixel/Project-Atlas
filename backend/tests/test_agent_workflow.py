@@ -1,6 +1,8 @@
 from datetime import date
 
 import chromadb
+import pytest
+from sqlalchemy.dialects import mysql
 
 from backend.agents.workflow import (
     QuestionDomain,
@@ -169,6 +171,29 @@ def test_retrieval_node_uses_entitlements_from_sql(monkeypatch) -> None:
     )
     assert {citation["report_id"] for citation in result["citations"]} == {101}
     assert all("Unauthorized" not in citation["quote"] for citation in result["citations"])
+
+
+def test_synthetic_metrics_require_explicit_opt_in(monkeypatch) -> None:
+    monkeypatch.delenv("ATLAS_INCLUDE_SYNTHETIC_METRICS", raising=False)
+    default_sql = str(workflow._metric_statement([101]).compile(dialect=mysql.dialect()))
+    default_where = default_sql.split("WHERE", 1)[1].split("ORDER BY", 1)[0]
+    assert "market_metrics.is_synthetic IS false" in default_where
+
+    monkeypatch.setenv("ATLAS_INCLUDE_SYNTHETIC_METRICS", "true")
+    opted_in_sql = str(workflow._metric_statement([101]).compile(dialect=mysql.dialect()))
+    opted_in_where = opted_in_sql.split("WHERE", 1)[1].split("ORDER BY", 1)[0]
+    assert "market_metrics.is_synthetic" not in opted_in_where
+
+    monkeypatch.setenv("ATLAS_INCLUDE_SYNTHETIC_METRICS", "false")
+    opted_out_sql = str(workflow._metric_statement([101]).compile(dialect=mysql.dialect()))
+    opted_out_where = opted_out_sql.split("WHERE", 1)[1].split("ORDER BY", 1)[0]
+    assert "market_metrics.is_synthetic IS false" in opted_out_where
+
+
+def test_synthetic_metric_opt_in_rejects_invalid_values(monkeypatch) -> None:
+    monkeypatch.setenv("ATLAS_INCLUDE_SYNTHETIC_METRICS", "sometimes")
+    with pytest.raises(RuntimeError, match="ATLAS_INCLUDE_SYNTHETIC_METRICS must be true or false"):
+        workflow._metric_statement([101])
 
 
 def test_critic_accepts_only_numbers_found_in_citations() -> None:
